@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+Copyright 2014 Rajesh Putta http://www.codesnippets4all.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ -->
+ 
+
+<automation-config>
+	<plug-ins-config>
+		<plug-in name="testInput" class="com.test.TestInputPlugin" type="input"></plug-in>
+		<plug-in name="testProcessor" class="com.test.TestProcessorPlugin" type="processor"></plug-in>
+		<plug-in name="testOutput" class="com.test.TestOutputPlugin" type="output"></plug-in>
+		<plug-in name="task6Output" class="com.test.Task6OutputPlugin" type="output"></plug-in>
+		<plug-in name="task5Output" class="com.test.Task5OutputPlugin" type="output"></plug-in>
+		<plug-in name="task7Output" class="com.test.Task7OutputPlugin" type="output"></plug-in>
+		<plug-in name="task8Output" class="com.test.Task8OutputPlugin" type="output"></plug-in>
+	</plug-ins-config>
+	
+	<listeners-config>
+		<listener name="testTaskListener" class="com.test.TestTaskListener" type="task"></listener>
+		<listener name="testLifeCycleListener" class="com.test.TestLifeCycleListener" type="lifecycle"></listener>
+	</listeners-config>
+	
+ 	<exception-mappers-config>
+		<exception-mapper name="exception" class="com.test.TestExceptionMapper"/>
+	</exception-mappers-config>
+	
+	<life-cycle-config name="first">
+		<configuration>
+			<key name="key1" value="value1"/>
+			<key name="key2" value="value2"/>
+			<key name="key3" value="value3"/>
+		</configuration>
+
+		<triggers>
+			<trigger name="testLifeCycleListener" type="pre"/> 
+			<trigger name="testLifeCycleListener" type="post"/>
+		</triggers>
+
+		<input-tasks-config>
+			<configuration>
+				<key name="key1" value="value1"/>
+				<key name="key2" value="value2"/>
+				<key name="key3" value="value3"/>
+			</configuration>
+
+			<task name="task1" plug-in="testInput" >
+				
+<!-- 				<depends>
+					<task name=""/>
+					<task name=""/>
+				</depends>
+ -->			
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			
+				<triggers>
+					<trigger name="testTaskListener" type="pre"/> 
+					<trigger name="testTaskListener" type="post"/>
+				</triggers>
+			
+			</task>	
+
+			<task name="task2" plug-in="testInput" >
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+
+			<task name="task3" plug-in="testInput" >
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+
+			<task name="task4" plug-in="testInput" >
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+		</input-tasks-config>
+		
+		<processor-tasks-config>
+			<configuration>
+				<key name="key1" value="value1"/>
+				<key name="key2" value="value2"/>
+				<key name="key3" value="value3"/>
+			</configuration>
+
+
+			<task name="task3" plug-in="testProcessor" >
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+
+			<task name="task4" plug-in="testProcessor" >
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+		</processor-tasks-config>
+	
+		<output-tasks-config>
+			<configuration>
+				<key name="key4" value="value1"/>
+				<key name="key5" value="value2"/>
+				<key name="key6" value="value3"/>
+			</configuration>
+
+			<task name="task5" plug-in="task5Output" >
+				<depends>
+					<task name="task6"/>
+				</depends>
+				
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+
+			<task name="task6" plug-in="task6Output" >
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+
+			</task>	
+
+			<task name="task7" plug-in="task7Output" >
+				<depends>
+					<task name="task5"/>
+				</depends>
+				
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+
+			<task name="task8" plug-in="task8Output" >
+				<depends>
+					<task name="task5"/>
+				</depends>
+				
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+
+
+		</output-tasks-config>
+	
+	</life-cycle-config>
+
+	<life-cycle-config name="second">
+		<configuration>
+			<key name="key8" value="value1"/>
+			<key name="key9" value="value2"/>
+			<key name="key7" value="value3"/>
+		</configuration>
+
+		<triggers>
+			<trigger name="testLifeCycleListener" type="pre"/> 
+			<trigger name="testLifeCycleListener" type="post"/>
+		</triggers>
+
+		<input-tasks-config>
+			<configuration>
+				<key name="key1" value="value1"/>
+				<key name="key2" value="value2"/>
+				<key name="key3" value="value3"/>
+			</configuration>
+
+			<task name="task1" plug-in="testInput" >
+				
+<!-- 				<depends>
+					<task name=""/>
+					<task name=""/>
+				</depends>
+ -->			
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			
+				<triggers>
+					<trigger name="testTaskListener" type="pre"/> 
+					<trigger name="testTaskListener" type="post"/>
+				</triggers>
+			
+<!-- 				<error-handlers>
+					<error-handler name="exception-mapper-name"/>
+					<error-handler name="exception-mapper-name"/>
+				</error-handlers>				
+ -->			</task>	
+
+			<task name="task2" plug-in="testInput" >
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+		</input-tasks-config>
+		
+		<processor-tasks-config>
+			<configuration>
+				<key name="key1" value="value1"/>
+				<key name="key2" value="value2"/>
+				<key name="key3" value="value3"/>
+			</configuration>
+
+			<task name="task3" plug-in="testProcessor" >
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+
+			<task name="task4" plug-in="testProcessor" >
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+		</processor-tasks-config>
+	
+		<output-tasks-config>
+			<configuration>
+				<key name="key4" value="value1"/>
+				<key name="key5" value="value2"/>
+				<key name="key6" value="value3"/>
+			</configuration>
+
+			<task name="task5" plug-in="task5Output" >
+				<depends>
+					<task name="task6"/>
+				</depends>
+				
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+
+			<task name="task6" plug-in="task6Output" >
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+
+			</task>	
+
+			<task name="task7" plug-in="task7Output" >
+				<depends>
+					<task name="task5"/>
+				</depends>
+				
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+
+			<task name="task8" plug-in="task8Output" >
+				<depends>
+					<task name="task5"/>
+				</depends>
+				
+				<configuration>
+					<key name="key1" value="value1"/>
+					<key name="key2" value="value2"/>
+					<key name="key3" value="value3"/>
+				</configuration>
+			</task>	
+
+
+		</output-tasks-config>
+	
+	</life-cycle-config>
+
+</automation-config>
